@@ -40,27 +40,27 @@ export default function ProductGrid({ products, title, showFilters = false }: Pr
         {(title || showFilters) && (
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
             {title && (
-              <h2 className="text-2xl md:text-3xl font-bold text-white">{title}</h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900">{title}</h2>
             )}
 
             {showFilters && (
               <div className="flex flex-wrap gap-3">
                 {/* League filters */}
-                <div className="flex gap-2">
+                <div className="flex gap-2 flex-wrap">
                   {[
                     { id: 'all', label: 'Todos' },
-                    { id: 'MLB', label: '⚾ MLB' },
-                    { id: 'NBA', label: '🏀 NBA' },
-                    { id: 'NFL', label: '🏈 NFL' },
-                    { id: 'ACCESORIO', label: '👕 Acc' },
+                    { id: 'MLB', label: 'MLB' },
+                    { id: 'NBA', label: 'NBA' },
+                    { id: 'NFL', label: 'NFL' },
+                    { id: 'ACCESORIO', label: 'Accesorios' },
                   ].map((item) => (
                     <button
                       key={item.id}
                       onClick={() => setFilter(item.id)}
                       className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                         filter === item.id
-                          ? 'bg-gradient-to-r from-flow-pink to-flow-cyan text-white'
-                          : 'bg-white/10 text-white/70 hover:bg-white/20'
+                          ? 'bg-black text-white'
+                          : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                       }`}
                     >
                       {item.label}
@@ -72,7 +72,7 @@ export default function ProductGrid({ products, title, showFilters = false }: Pr
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
-                  className="px-4 py-2 bg-white/10 text-white rounded-lg text-sm border border-white/10 focus:outline-none focus:border-flow-cyan"
+                  className="px-4 py-2 bg-white text-gray-700 rounded-full text-sm border border-gray-200 focus:outline-none focus:border-gray-400"
                 >
                   <option value="default">Ordenar por</option>
                   <option value="price-low">Precio: Menor a Mayor</option>
@@ -99,7 +99,7 @@ export default function ProductGrid({ products, title, showFilters = false }: Pr
         {/* Empty state */}
         {sortedProducts.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-white/60 text-lg">No se encontraron productos</p>
+            <p className="text-gray-500 text-lg">No se encontraron productos</p>
           </div>
         )}
       </div>

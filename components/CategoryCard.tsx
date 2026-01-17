@@ -40,24 +40,17 @@ export default function CategoryCard({ league, index = 0, large = false }: Categ
           </div>
 
           {/* Gradient overlay */}
-          <div
-            className={`absolute inset-0 bg-gradient-to-t ${league.gradient} opacity-80 group-hover:opacity-90 transition-opacity duration-300`}
-          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
 
           {/* Content */}
           <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end">
-            {/* Emoji */}
-            <span className="text-4xl md:text-5xl mb-2 group-hover:scale-110 transition-transform inline-block">
-              {league.emoji}
-            </span>
-
             {/* League name */}
             <h3 className="text-3xl md:text-4xl font-black text-white mb-1">
               {league.name}
             </h3>
 
             {/* Description */}
-            <p className="text-white/80 text-sm md:text-base mb-4">
+            <p className="text-white/70 text-sm md:text-base mb-4">
               {league.description}
             </p>
 
@@ -66,11 +59,6 @@ export default function CategoryCard({ league, index = 0, large = false }: Categ
               <span>Ver colección</span>
               <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
             </div>
-          </div>
-
-          {/* Corner decoration */}
-          <div className="absolute top-4 right-4 w-12 h-12 border-2 border-white/20 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-            <ArrowRight size={20} className="text-white" />
           </div>
         </div>
       </Link>

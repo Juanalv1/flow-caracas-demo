@@ -17,35 +17,6 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
   const [isAdded, setIsAdded] = useState(false);
   const { addToCart } = useCart();
 
-  const leagueColors: Record<string, { bg: string; border: string; text: string; glow: string }> = {
-    MLB: {
-      bg: 'bg-mlb-blue/20',
-      border: 'border-mlb-blue',
-      text: 'text-mlb-blue',
-      glow: 'shadow-mlb-blue/40'
-    },
-    NBA: {
-      bg: 'bg-nba-orange/20',
-      border: 'border-nba-orange',
-      text: 'text-nba-orange',
-      glow: 'shadow-nba-orange/40'
-    },
-    NFL: {
-      bg: 'bg-nfl-red/20',
-      border: 'border-nfl-red',
-      text: 'text-nfl-red',
-      glow: 'shadow-nfl-red/40'
-    },
-    ACCESORIO: {
-      bg: 'bg-flow-cyan/20',
-      border: 'border-flow-cyan',
-      text: 'text-flow-cyan',
-      glow: 'shadow-flow-cyan/40'
-    }
-  };
-
-  const colors = leagueColors[product.league];
-
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
@@ -69,43 +40,33 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
       className="group"
     >
       <Link href={`/catalogo/${product.slug}`}>
-        <div
-          className={`relative bg-dark-gray rounded-xl overflow-hidden border border-white/10 transition-all duration-300 hover:border-t-4 ${colors.border} hover:shadow-lg ${colors.glow} hover:-translate-y-1`}
-        >
+        <div className="relative bg-white rounded-2xl overflow-hidden border border-gray-100 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
           {/* Image */}
-          <div className="relative aspect-square overflow-hidden bg-charcoal">
+          <div className="relative aspect-square overflow-hidden bg-gray-100">
             <img
               src={product.image}
               alt={product.name}
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
 
-            {/* Badges */}
-            <div className="absolute top-3 left-3 flex flex-col gap-2">
-              <span className={`px-2 py-1 ${colors.bg} ${colors.text} text-xs font-bold rounded`}>
+            {/* Badge */}
+            <div className="absolute top-3 left-3">
+              <span className="px-2.5 py-1 bg-black text-white text-xs font-medium rounded-full">
                 {product.league}
-              </span>
-              <span className="px-2 py-1 bg-white/10 text-white text-xs font-medium rounded backdrop-blur-sm">
-                ORIGINAL
               </span>
             </div>
 
             {/* Stock badge */}
             <div className="absolute top-3 right-3">
-              {product.stock === 'in_stock' && (
-                <span className="px-2 py-1 bg-green-500/20 text-green-400 text-xs font-medium rounded backdrop-blur-sm">
-                  En stock
-                </span>
-              )}
               {product.stock === 'low_stock' && (
-                <span className="px-2 py-1 bg-yellow-500/20 text-yellow-400 text-xs font-medium rounded backdrop-blur-sm">
+                <span className="px-2.5 py-1 bg-amber-100 text-amber-700 text-xs font-medium rounded-full">
                   Pocas unidades
                 </span>
               )}
             </div>
 
             {/* Quick actions overlay */}
-            <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
+            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
               <motion.button
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
@@ -113,7 +74,7 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
                 className={`p-3 rounded-full transition-colors ${
                   isAdded
                     ? 'bg-green-500 text-white'
-                    : 'bg-white text-black hover:bg-flow-pink hover:text-white'
+                    : 'bg-white text-gray-900 hover:bg-black hover:text-white'
                 }`}
               >
                 {isAdded ? <Check size={20} /> : <ShoppingCart size={20} />}
@@ -132,12 +93,12 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
           {/* Content */}
           <div className="p-4">
             {/* Team name */}
-            <p className="text-white/50 text-xs uppercase tracking-wider mb-1">
+            <p className="text-gray-400 text-xs uppercase tracking-wider mb-1">
               {product.team}
             </p>
 
             {/* Product name */}
-            <h3 className="text-white font-bold text-sm md:text-base mb-2 line-clamp-1 group-hover:text-flow-cyan transition-colors">
+            <h3 className="text-gray-900 font-bold text-sm md:text-base mb-2 line-clamp-1 group-hover:text-gray-600 transition-colors">
               {product.name}
             </h3>
 
@@ -153,8 +114,8 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
                   }}
                   className={`w-5 h-5 rounded-full border-2 transition-all ${
                     selectedColor === color
-                      ? 'border-white scale-110'
-                      : 'border-transparent hover:border-white/50'
+                      ? 'border-gray-900 scale-110'
+                      : 'border-gray-200 hover:border-gray-400'
                   }`}
                   style={{ backgroundColor: color }}
                 />
@@ -163,15 +124,15 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
 
             {/* Price and action */}
             <div className="flex items-center justify-between">
-              <span className="text-2xl font-black text-white">
+              <span className="text-2xl font-black text-gray-900">
                 ${product.price}
               </span>
               <button
                 onClick={handleAddToCart}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                   isAdded
                     ? 'bg-green-500 text-white'
-                    : 'bg-gradient-to-r from-flow-pink to-flow-cyan text-white hover:opacity-90'
+                    : 'bg-black text-white hover:bg-gray-800'
                 }`}
               >
                 {isAdded ? 'Agregado!' : 'Agregar'}

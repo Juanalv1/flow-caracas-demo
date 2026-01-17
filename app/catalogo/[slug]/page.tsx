@@ -21,10 +21,10 @@ export default function ProductPage() {
 
   if (!product) {
     return (
-      <div className="min-h-screen bg-black pt-32 flex items-center justify-center">
+      <div className="min-h-screen bg-white pt-32 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-white mb-4">Producto no encontrado</h1>
-          <Link href="/catalogo" className="text-flow-cyan hover:underline">
+          <h1 className="text-2xl font-bold text-gray-900 mb-4">Producto no encontrado</h1>
+          <Link href="/catalogo" className="text-black hover:underline">
             Volver al catálogo
           </Link>
         </div>
@@ -35,10 +35,10 @@ export default function ProductPage() {
   const relatedProducts = getRelatedProducts(product);
 
   const leagueColors: Record<string, { bg: string; text: string }> = {
-    MLB: { bg: 'bg-mlb-blue/20', text: 'text-mlb-blue' },
-    NBA: { bg: 'bg-nba-orange/20', text: 'text-nba-orange' },
-    NFL: { bg: 'bg-nfl-red/20', text: 'text-nfl-red' },
-    ACCESORIO: { bg: 'bg-flow-cyan/20', text: 'text-flow-cyan' },
+    MLB: { bg: 'bg-mlb-blue/10', text: 'text-mlb-blue' },
+    NBA: { bg: 'bg-nba-orange/10', text: 'text-nba-orange' },
+    NFL: { bg: 'bg-nfl-red/10', text: 'text-nfl-red' },
+    ACCESORIO: { bg: 'bg-gray-100', text: 'text-gray-700' },
   };
 
   const colors = leagueColors[product.league];
@@ -59,12 +59,12 @@ export default function ProductPage() {
   };
 
   return (
-    <div className="min-h-screen bg-black pt-32 pb-16">
+    <div className="min-h-screen bg-white pt-32 pb-16">
       <div className="container mx-auto px-4">
         {/* Breadcrumb */}
         <Link
           href="/catalogo"
-          className="inline-flex items-center gap-2 text-white/60 hover:text-white mb-8 transition-colors"
+          className="inline-flex items-center gap-2 text-gray-500 hover:text-gray-900 mb-8 transition-colors"
         >
           <ArrowLeft size={18} />
           Volver al catálogo
@@ -78,7 +78,7 @@ export default function ProductPage() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="relative aspect-square rounded-2xl overflow-hidden bg-dark-gray mb-4">
+            <div className="relative aspect-square rounded-2xl overflow-hidden bg-gray-100 mb-4">
               <img
                 src={product.image}
                 alt={product.name}
@@ -90,7 +90,7 @@ export default function ProductPage() {
                 <span className={`px-3 py-1 ${colors.bg} ${colors.text} text-sm font-bold rounded`}>
                   {product.league}
                 </span>
-                <span className="px-3 py-1 bg-white/10 text-white text-sm font-medium rounded backdrop-blur-sm">
+                <span className="px-3 py-1 bg-black/80 text-white text-sm font-medium rounded backdrop-blur-sm">
                   ORIGINAL
                 </span>
               </div>
@@ -98,12 +98,12 @@ export default function ProductPage() {
               {/* Stock badge */}
               <div className="absolute top-4 right-4">
                 {product.stock === 'in_stock' && (
-                  <span className="px-3 py-1 bg-green-500/20 text-green-400 text-sm font-medium rounded backdrop-blur-sm">
+                  <span className="px-3 py-1 bg-green-100 text-green-700 text-sm font-medium rounded">
                     En stock
                   </span>
                 )}
                 {product.stock === 'low_stock' && (
-                  <span className="px-3 py-1 bg-yellow-500/20 text-yellow-400 text-sm font-medium rounded backdrop-blur-sm">
+                  <span className="px-3 py-1 bg-amber-100 text-amber-700 text-sm font-medium rounded">
                     Pocas unidades
                   </span>
                 )}
@@ -116,7 +116,7 @@ export default function ProductPage() {
                 <div
                   key={i}
                   className={`aspect-square rounded-lg overflow-hidden cursor-pointer border-2 ${
-                    i === 0 ? 'border-flow-cyan' : 'border-transparent hover:border-white/30'
+                    i === 0 ? 'border-black' : 'border-transparent hover:border-gray-300'
                   }`}
                 >
                   <img
@@ -135,25 +135,25 @@ export default function ProductPage() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <p className="text-white/50 text-sm uppercase tracking-wider mb-2">
+            <p className="text-gray-400 text-sm uppercase tracking-wider mb-2">
               {product.team}
             </p>
-            <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               {product.name}
             </h1>
 
             {/* Price */}
             <div className="flex items-baseline gap-4 mb-6">
-              <span className="text-4xl font-black text-white">${product.price}</span>
-              <span className="text-white/50">USD</span>
+              <span className="text-4xl font-black text-gray-900">${product.price}</span>
+              <span className="text-gray-400">USD</span>
             </div>
 
             {/* Description */}
-            <p className="text-white/70 mb-8">{product.description}</p>
+            <p className="text-gray-600 mb-8">{product.description}</p>
 
             {/* Color selector */}
             <div className="mb-6">
-              <p className="text-white/60 text-sm mb-3">Colores disponibles:</p>
+              <p className="text-gray-500 text-sm mb-3">Colores disponibles:</p>
               <div className="flex gap-3">
                 {product.colors.map((color) => (
                   <button
@@ -161,8 +161,8 @@ export default function ProductPage() {
                     onClick={() => setSelectedColor(color)}
                     className={`w-10 h-10 rounded-full border-2 transition-all ${
                       selectedColor === color
-                        ? 'border-white scale-110'
-                        : 'border-transparent hover:border-white/50'
+                        ? 'border-black scale-110'
+                        : 'border-gray-200 hover:border-gray-400'
                     }`}
                     style={{ backgroundColor: color }}
                   />
@@ -172,20 +172,20 @@ export default function ProductPage() {
 
             {/* Quantity */}
             <div className="mb-8">
-              <p className="text-white/60 text-sm mb-3">Cantidad:</p>
+              <p className="text-gray-500 text-sm mb-3">Cantidad:</p>
               <div className="flex items-center gap-4">
                 <button
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-white/20 transition-colors"
+                  className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-gray-200 transition-colors"
                 >
-                  <Minus size={18} className="text-white" />
+                  <Minus size={18} className="text-gray-700" />
                 </button>
-                <span className="text-white text-xl font-bold w-12 text-center">{quantity}</span>
+                <span className="text-gray-900 text-xl font-bold w-12 text-center">{quantity}</span>
                 <button
                   onClick={() => setQuantity(quantity + 1)}
-                  className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-white/20 transition-colors"
+                  className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-gray-200 transition-colors"
                 >
-                  <Plus size={18} className="text-white" />
+                  <Plus size={18} className="text-gray-700" />
                 </button>
               </div>
             </div>
@@ -197,7 +197,7 @@ export default function ProductPage() {
                 className={`flex-1 flex items-center justify-center gap-2 px-6 py-4 rounded-xl font-bold text-lg transition-all ${
                   isAdded
                     ? 'bg-green-500 text-white'
-                    : 'bg-gradient-to-r from-flow-pink to-flow-cyan text-white hover:opacity-90'
+                    : 'bg-black text-white hover:bg-gray-800'
                 }`}
               >
                 {isAdded ? (
@@ -222,17 +222,17 @@ export default function ProductPage() {
             </div>
 
             {/* Share */}
-            <button className="flex items-center gap-2 text-white/60 hover:text-white transition-colors">
+            <button className="flex items-center gap-2 text-gray-500 hover:text-gray-900 transition-colors">
               <Share2 size={18} />
               Compartir producto
             </button>
 
             {/* Mayorista info */}
-            <div className="mt-8 p-4 bg-flow-yellow/10 border border-flow-yellow/30 rounded-xl">
-              <p className="text-flow-yellow font-medium mb-1">¿Compras al mayor?</p>
-              <p className="text-white/60 text-sm">
+            <div className="mt-8 p-4 bg-amber-50 border border-amber-200 rounded-xl">
+              <p className="text-amber-700 font-medium mb-1">¿Compras al mayor?</p>
+              <p className="text-gray-600 text-sm">
                 A partir de 6 unidades obtienes descuentos especiales.{' '}
-                <Link href="/mayorista" className="text-flow-cyan hover:underline">
+                <Link href="/mayorista" className="text-black font-medium hover:underline">
                   Ver precios mayoristas
                 </Link>
               </p>
@@ -243,7 +243,7 @@ export default function ProductPage() {
         {/* Related products */}
         {relatedProducts.length > 0 && (
           <section>
-            <h2 className="text-2xl font-bold text-white mb-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-8">
               Otras gorras de {product.league}
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">

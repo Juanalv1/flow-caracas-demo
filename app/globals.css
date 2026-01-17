@@ -1,11 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  /* Base colors */
-  --color-black: #000000;
-  --color-dark-gray: #1a1a1a;
-  --color-charcoal: #2d2d2d;
+  /* Base colors - Light theme */
+  --color-black: #0a0a0a;
+  --color-dark-gray: #f8f8f8;
+  --color-charcoal: #f0f0f0;
   --color-white: #FFFFFF;
+  --color-light-bg: #fafafa;
+  --color-card-bg: #ffffff;
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #666666;
+  --color-border: #e5e5e5;
 
   /* League colors */
   --color-mlb-blue: #002D72;
@@ -13,7 +18,7 @@
   --color-nfl-red: #D50A0A;
 
   /* Brand colors */
-  --color-flow-cyan: #00D9FF;
+  --color-flow-cyan: #00C4E8;
   --color-flow-pink: #FF006E;
   --color-flow-yellow: #FFD700;
 }
@@ -32,28 +37,41 @@
   animation: gradient-x 3s ease infinite;
 }
 
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar - light theme */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-dark-gray);
+  background: #f0f0f0;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-charcoal);
+  background: #ccc;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-flow-cyan);
+  background: var(--color-flow-pink);
 }
 
 /* Selection */
@@ -83,10 +101,10 @@ html {
   overflow: hidden;
 }
 
-/* Body styles */
+/* Body styles - Light theme */
 body {
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-light-bg);
+  color: var(--color-text-primary);
   font-family: system-ui, -apple-system, sans-serif;
 }
 
@@ -118,4 +136,13 @@ body {
 
 .animate-pulse-badge {
   animation: pulse-badge 2s ease-in-out infinite;
+}
+
+/* Card shadow for light theme */
+.card-shadow {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+}
+
+.card-shadow-hover:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
 }

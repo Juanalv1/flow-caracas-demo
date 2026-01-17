@@ -11,20 +11,20 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Flow Caracas | Gorras Originales MLB, NBA, NFL - Mayorista y Detal",
-  description: "Tienda de gorras originales MLB, NBA, NFL en Caracas, Venezuela. Precios mayoristas, delivery en Caracas y envíos nacionales. Visítanos en La Hoyada.",
-  keywords: "gorras, MLB, NBA, NFL, caracas, venezuela, mayorista, snapback, new era",
+  title: "Flow Caracas | Tu Estilo Urbano - Gorras y Moda Streetwear",
+  description: "Tu tienda de moda urbana en Caracas. Gorras, snapbacks, accesorios y estilo streetwear. Precios mayoristas, delivery en Caracas y envíos nacionales.",
+  keywords: "gorras, moda urbana, streetwear, caracas, venezuela, mayorista, snapback, estilo",
   openGraph: {
     title: "Flow Caracas | Tu Estilo Urbano",
-    description: "Tienda mayorista de gorras y accesorios deportivos en Caracas",
+    description: "Tienda de moda urbana y gorras en Caracas. 122K+ seguidores nos respaldan.",
     images: ["/og-image.jpg"],
     locale: "es_VE",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Flow Caracas | Gorras Originales",
-    description: "122K+ clientes satisfechos. Gorras MLB, NBA, NFL en Venezuela.",
+    title: "Flow Caracas | Tu Estilo Urbano",
+    description: "122K+ clientes satisfechos. Moda urbana y gorras en Venezuela.",
   },
 };
 
@@ -35,7 +35,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={`${inter.variable} antialiased bg-black text-white`}>
+      <body className={`${inter.variable} antialiased bg-white text-gray-900`}>
         <CartProvider>
           <Header />
           <main className="min-h-screen">{children}</main>
