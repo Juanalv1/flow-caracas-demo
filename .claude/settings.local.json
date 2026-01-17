@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run build:*)",
+      "Bash(gh auth:*)",
+      "Bash(gh repo create:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(vercel whoami:*)",
+      "Bash(vercel:*)",
+      "Bash(npm install:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nfeat: Complete e-commerce Flow Caracas\n\n- Add product catalog with MLB, NBA, NFL caps and accessories\n- Create shopping cart with WhatsApp checkout integration\n- Implement wholesale discount calculator \\(10%, 15%, 20%\\)\n- Add category pages \\(MLB, NBA, NFL, Accessories\\)\n- Create responsive header with cart preview dropdown\n- Add hero section with animated gradients\n- Implement features, testimonials, and delivery sections\n- Create wholesale page with contact form\n- Add individual product pages with related items\n- Implement local storage cart persistence\n- Create Instagram feed and brands sections\n- Add store location section\n- Full Tailwind CSS styling with custom theme colors\n- Framer Motion animations throughout\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")"
+    ]
+  }
+}
